@@ -1,0 +1,110 @@
+import math
+
+
+def checker():
+    while True:
+        try:
+            UserInput = int(input("enter your choice/value: "))
+        except ValueError:
+            print("Not an integer!")
+            continue
+        else:
+            break
+    return UserInput
+
+
+def choose():
+    while True:
+        print(
+            "Выберите действие\n1.Сложение\n2.Вычитание\n3.Умножение\n4.Деление\n5.Возведение в степень\n6.Квадратный "
+            "корень\n7.Факториал\n8.Cинус\n9.Косинус\n10.Тангенс\n11.Выйти с программы")
+        UserChoise = checker()
+        if UserChoise > 11 or UserChoise < 0:
+            print("повторите ввод")
+
+        else:
+            status_enter(UserChoise)
+
+
+def status_enter(Number_Enter):
+    match Number_Enter:
+        case 1:
+            ValueOne = checker()
+            ValueTwo = checker()
+            print("Ответ=", ValueOne + ValueTwo)
+
+        case 2:
+            ValueOne = checker()
+            ValueTwo = checker()
+            print("Ответ=", ValueOne - ValueTwo)
+            choose()
+
+        case 3:
+            ValueOne = checker()
+            ValueTwo = checker()
+            print("Ответ=", ValueOne * ValueTwo)
+            choose()
+        case 4:
+            ValueOne = checker()
+
+            while ValueOne == 0:
+                print("Делить на 0 нельзя введите первое число заново")
+                ValueOne = checker()
+
+            ValueTwo = checker()
+
+            while ValueTwo == 0:
+                print("Делить на 0 нельзя введите второе число заново")
+                ValueTwo = checker()
+
+            print("Ответ=", ValueOne / ValueTwo)
+            choose()
+
+        case 5:
+            ValueOne = checker()
+            ValueTwo = checker()
+
+            print("Ответ=", ValueOne ** ValueTwo)
+            choose()
+
+        case 6:
+            ValueOne = checker()
+            while ValueOne <= 0:
+                print("Невозможно найти корень из отрицательного числа повторите ввод")
+                ValueOne = checker()
+
+            print("Ответ=", math.sqrt(ValueOne))
+            choose()
+
+        case 7:
+            ValueOne = checker()
+            while ValueOne <= 0:
+                print("Невозможно найти факториал из отрицательного числа повторите ввод")
+                ValueOne = checker()
+            print("Ответ=", math.factorial(ValueOne))
+            choose()
+
+        case 8:
+            ValueOne = checker()
+            print("Ответ=", math.sin(ValueOne))
+            choose()
+
+        case 9:
+            ValueOne = checker()
+            print(math.cos(ValueOne))
+            choose()
+
+        case 10:
+            ValueOne = checker()
+            while ValueOne % 90 == 0 or ValueOne % 270 == 0:
+                print("ТАНГЕНСА", ValueOne, "НЕ СУЩЕСТВУЕТ")
+                print("Повторите попытку ввода")
+                ValueOne = checker()
+            print(math.tan(ValueOne))
+            choose()
+
+        case 11:
+            exit()
+
+
+choose()
